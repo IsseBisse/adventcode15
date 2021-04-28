@@ -33,12 +33,17 @@ def part_one():
 	raw_data = get_data("smallInput.txt")
 	connections = parse_data(raw_data)
 	
+	# Create wires
 	wires = dict()
 	for conn in connections:
 		name = conn["receiver"]
 		wires[name] = Wire(name)
 
-	print(wires["x"])
+	# Assign connections
+	for conn in connections:
+		wires[conn["receiver"]].set_getter(conn["operator"], conn["args"])
+
+	print(wires["x"].get_value())
 
 def part_two():
 	pass

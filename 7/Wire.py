@@ -4,31 +4,28 @@ class Wire:
 		return self.args[0]
 
 	def NOT(self):
-		pass
+		return ~self.args[0].get_value()
 
 	def AND(self):
-		pass
+		return self.args[0].get_value() & self.args[1].get_value()
 
 	def OR(self):
-		pass
+		return self.args[0].get_value() | self.args[1].get_value()
 
 	def LSHIFT(self):
-		pass
+		return self.args[0].get_value() << self.args[1].get_value()
 
 	def RSHIFT(self):
-		pass
+		return self.args[0].get_value() >> self.args[1].get_value()
 
 	def __init__(self, name):
 		self.name = name
-		self.operator = None
+		self.get_value = None
 		self.args = None
-
-	def __get__(self):
-		return self.operator()
 
 	def __str__(self):
 		return self.name
 
 	def set_getter(self, func_name, args):
 		self.args = args
-		self.operator = func_name
+		self.get_value = func_name
