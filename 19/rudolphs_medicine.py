@@ -60,13 +60,13 @@ def replace_molecule_group(molecule, group, replacement_group):
 def collapser(replacements, num_iterations_list):
 	
 	def collapse_to_e(molecule, iterations):
-		# print(f"Molecule: {molecule}, iterations: {iterations}")
+		print(f"Molecule: {molecule}, iterations: {iterations}")
+		
+		if iterations >= min(num_iterations_list):
+			return
 
 		if molecule == "e":
 			num_iterations_list.append(iterations)
-			return
-
-		if iterations > min(num_iterations_list):
 			return
 
 		for group, replacement_group in replacements.items():
@@ -78,6 +78,7 @@ def collapser(replacements, num_iterations_list):
 	return collapse_to_e
 
 def expander(replacements, target_molecule):
+	pass 
 
 def part_two():
 	data = get_data("input.txt")
